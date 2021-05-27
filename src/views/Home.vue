@@ -12,12 +12,14 @@
           ></i>
         </div>
         <img class="m1" src="../assets/img/layout_logo.png" alt="" />
-        <div class="title">黑马面面</div>
+        <div class="title">管理系统</div>
         <div class="user">
           <img class="avator" src="" alt="" />
           <div class="user-name">{{ '' + ', 你好' }}</div>
         </div>
-        <el-button type="primary" icon="el-icon-refresh">退出</el-button>
+        <el-button type="primary" @click="tologout" icon="el-icon-refresh"
+          >退出</el-button
+        >
       </el-header>
       <el-container>
         <el-aside>
@@ -47,9 +49,7 @@
 
 <script>
 export default {
-  mounted() {
-    console.log('-------------', this.$router);
-  },
+  mounted() {},
   data() {
     return {
       iscollapse: false,
@@ -59,6 +59,26 @@ export default {
   methods: {
     foldChange() {
       this.iscollapse = !this.iscollapse;
+    },
+    tologout() {
+      this.$confirm('即将退出用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      })
+        .then(() => {
+          this.$router.push('/login');
+          this.$message({
+            type: 'success',
+            message: '退出成功!',
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消',
+          });
+        });
     },
   },
   computed: {},

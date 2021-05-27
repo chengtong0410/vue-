@@ -3,7 +3,7 @@
     <div class="left">
       <div class="login-top">
         <img class="logo" src="../assets/img/login_logo.png" alt="" />
-        <div class="title">黑马面面</div>
+        <div class="title">个人系统</div>
         <div class="center-item"></div>
         <div class="word">用户登录</div>
       </div>
@@ -98,7 +98,7 @@ export default {
       baseUrl: process.env.VUE_APP_URL,
       codeUrl: '/captcha?type=login',
       loginCodeUrl: 'http://autumnfish.cn/heimamm/public/captcha?type=login',
-      userKnowState: false,
+      userKnowState: true,
       rules: {
         phone: [
           { required: true, message: '请输入手机号码', trigger: 'blur' },

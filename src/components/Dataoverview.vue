@@ -8,7 +8,13 @@
       multiple
     />
     <template v-for="(item, index) in imgArr">
-      <img :src="item.base64" alt="" class="upload-img" :key="index" />
+      <img
+        :src="item.base64"
+        alt=""
+        class="upload-img"
+        :key="index"
+        @click="deleteImg(index)"
+      />
     </template>
     <div class="add-button">
       <i class="add-icon el-icon-plus" @click="fileButtonHandler"></i>
@@ -89,6 +95,9 @@ export default {
         this.$refs.fileItem.click();
       }
     },
+    deleteImg(item) {
+      this.imgArr = this.imgArr.filter((i, ind) => ind !== item);
+    },
   },
 };
 </script>
@@ -106,7 +115,7 @@ export default {
   height: 178px;
   margin-right: 20px;
   border-radius: 6px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .add-button {
   display: flex;
